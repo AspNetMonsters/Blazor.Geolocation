@@ -2,7 +2,7 @@
 This package provides Blazor applications with access to the browser's [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation)
 
 ## Usage
-1) In your Blazor app, add the `AspNetMonsters.Blazor.Geolocation` package
+1) In your Blazor app, add the `AspNetMonsters.Blazor.Geolocation` [NuGet package](https://www.nuget.org/packages/AspNetMonsters.Blazor.Geolocation/)
 
     ```
     Install-Package AspNetMonsters.Blazor.Geolocation -IncludePrerelease
