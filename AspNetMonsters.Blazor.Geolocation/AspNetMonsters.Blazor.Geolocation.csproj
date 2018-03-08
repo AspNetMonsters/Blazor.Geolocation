@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/AspNetMonsters/Blazor.Geolocation</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/AspNetMonsters/Blazor.Geolocation/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Simon Timms, David Paquette, James Chambers</Copyright>
+    <Description>Blazor interop for brower Geolocation apis</Description>
+    <RepositoryUrl>https://github.com/AspNetMonsters/Blazor.Geolocation</RepositoryUrl>
+    <PackageTags>Blazor Geolocation</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>AspNetMonsters.Blazor.Geolocation</AssemblyName>
+    <RootNamespace>AspNetMonsters.Blazor.Geolocation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.1.0-preview1-10071" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.1.0-preview1-10071" />
+  </ItemGroup>
+
+</Project>
