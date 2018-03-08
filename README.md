@@ -29,6 +29,7 @@ This package provides Blazor applications with access to the browser's [Geolocat
 1) Now you can inject the LocationService into any Blazor page and use it like this:
 
     ```
+    @using AspNetMonsters.Blazor.Geolocation
     @inject LocationService  LocationService
     <h3>You are here</h3>
     <div>
