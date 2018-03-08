@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageProjectUrl>https://github.com/AspNetMonsters/Blazor.Geolocation</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/AspNetMonsters/Blazor.Geolocation/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Simon Timms, David Paquette, James Chambers</Copyright>
@@ -11,6 +11,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>AspNetMonsters.Blazor.Geolocation</AssemblyName>
     <RootNamespace>AspNetMonsters.Blazor.Geolocation</RootNamespace>
+    <Version>0.1.0-preview1-1001</Version>
+
+    <DefaultItemExcludes>${DefaultItemExcludes};node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
