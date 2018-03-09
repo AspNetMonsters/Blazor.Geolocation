@@ -19,11 +19,30 @@ registerFunction('GetLocation', function (requestId) {
         return "No location finding";
     }
 });
+registerFunction('WatchLocation', function (requestId) {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(function (position) {
+            dispatchWatchResponse(requestId, position.coords);
+        });
+    }
+    else {
+        return "No location watching";
+    }
+});
 var assemblyName = "AspNetMonsters.Blazor.Geolocation";
 var namespace = "AspNetMonsters.Blazor.Geolocation";
 var type = "LocationService";
 function dispatchResponse(id, location) {
     var receiveResponseMethod = platform.findMethod(assemblyName, namespace, type, "ReceiveResponse");
+    platform.callMethod(receiveResponseMethod, null, [
+        platform.toDotNetString(id),
+        platform.toDotNetString(location.latitude.toString()),
+        platform.toDotNetString(location.longitude.toString()),
+        platform.toDotNetString(location.accuracy.toString()),
+    ]);
+}
+function dispatchWatchResponse(id, location) {
+    var receiveResponseMethod = platform.findMethod(assemblyName, namespace, type, "ReceiveWatchResponse");
     platform.callMethod(receiveResponseMethod, null, [
         platform.toDotNetString(id),
         platform.toDotNetString(location.latitude.toString()),

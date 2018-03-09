@@ -11,7 +11,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>AspNetMonsters.Blazor.Geolocation</AssemblyName>
     <RootNamespace>AspNetMonsters.Blazor.Geolocation</RootNamespace>
-    <Version>0.1.0-preview1-1001</Version>
+    <Version>0.1.0-preview1-1003</Version>
 
     <DefaultItemExcludes>${DefaultItemExcludes};node_modules\**</DefaultItemExcludes>
   </PropertyGroup>

@@ -20,6 +20,17 @@ registerFunction('GetLocation', (requestId) => {
     }
 });
 
+registerFunction('WatchLocation', (requestId) => {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition((position) => {
+            dispatchWatchResponse(requestId, position.coords);
+        });
+    }
+    else {
+        return "No location watching";
+    }
+});
+
 let assemblyName = "AspNetMonsters.Blazor.Geolocation";
 let namespace = "AspNetMonsters.Blazor.Geolocation";
 let type = "LocationService";
@@ -29,6 +40,23 @@ function dispatchResponse(id: string, location: coordinate) {
         namespace,
         type,
         "ReceiveResponse"
+    );
+
+
+    platform.callMethod(receiveResponseMethod, null, [
+        platform.toDotNetString(id),
+        platform.toDotNetString(location.latitude.toString()),
+        platform.toDotNetString(location.longitude.toString()),
+        platform.toDotNetString(location.accuracy.toString()),
+    ]);
+}
+
+function dispatchWatchResponse(id: string, location: coordinate) {
+    let receiveResponseMethod = platform.findMethod(
+        assemblyName,
+        namespace,
+        type,
+        "ReceiveWatchResponse"
     );
 
 
