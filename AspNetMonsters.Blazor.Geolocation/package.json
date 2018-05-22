@@ -1,15 +1,13 @@
 {
-  "name": "@AspNetMonsters/BlazorGeolocation",
-  "version": "0.0.1",
+  "name": "aspnetmonsters-blazorgeolocation",
+  "version": "0.3.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/emscripten": "0.0.31",
     "ts-loader": "^3.2.0",
-    "typescript": "^2.6.1",
-    "webpack": "~3.8.1"
+    "typescript": "^2.6.1"
   }
 }

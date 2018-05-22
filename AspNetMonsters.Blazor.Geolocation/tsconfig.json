@@ -10,7 +10,7 @@
       "dom"
     ],
     "strict": true,
-    "outDir": "./dist/"
+    "outDir": "./content/"
   },
   "exclude": [
     "node_modules"

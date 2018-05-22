@@ -50,4 +50,4 @@ function dispatchWatchResponse(id, location) {
         platform.toDotNetString(location.accuracy.toString()),
     ]);
 }
-//# sourceMappingURL=Location.js.map
+//# sourceMappingURL=location.js.map
