@@ -8,13 +8,15 @@ This package provides Blazor applications with access to the browser's [Geolocat
     Install-Package AspNetMonsters.Blazor.Geolocation -IncludePrerelease
     ```
 
-1) In your Blazor app's `Program.cs`, register the 'LocationService'.
+1) In your Blazor app's `Startup.cs`, register the 'LocationService'.
 
     ```
-    var serviceProvider = new BrowserServiceProvider(configure =>
+    public void ConfigureServices(IServiceCollection services)
     {
-        configure.AddSingleton<LocationService>();
-    });
+        ...
+        services.AddSingleton<LocationService>();
+        ...
+    }
     ```
 
 1) Now you can inject the LocationService into any Blazor page and use it like this:
