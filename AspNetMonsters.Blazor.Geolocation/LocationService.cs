@@ -17,21 +17,24 @@ namespace AspNetMonsters.Blazor.Geolocation
             var requestId = Guid.NewGuid();
 
             _pendingRequests.Add(requestId, tcs);
-            return await JSRuntime.Current.InvokeAsync<Location>("GetLocation", requestId );
+            var result = await JSRuntime.Current.InvokeAsync<Location>("AspNetMonsters.Blazor.Geolocation.GetLocation", requestId);
+            
+            return await tcs.Task;
         }
 
         public async Task WatchLocation(Action<Location> watchCallback)
         {
             var requestId = Guid.NewGuid();
             _watches.Add(requestId, watchCallback);
-            await JSRuntime.Current.InvokeAsync<Location>("WatchLocation", requestId);
+            await JSRuntime.Current.InvokeAsync<Location>("AspNetMonsters.Blazor.Geolocation.WatchLocation", requestId);
         }
 
-        private static void ReceiveResponse(
+        [JSInvokable]
+        public static void ReceiveResponse(
             string id,
-            string latitude,
-            string longitude,
-            string accuracy)
+            double latitude,
+            double longitude,
+            double accuracy)
         {
             TaskCompletionSource<Location> pendingTask;
             var idVal = Guid.Parse(id);
@@ -44,11 +47,12 @@ namespace AspNetMonsters.Blazor.Geolocation
             });
         }
 
-        private static void ReceiveWatchResponse(
+        [JSInvokable]
+        public static void ReceiveWatchResponse(
             string id,
-            string latitude,
-            string longitude,
-            string accuracy)
+            double latitude,
+            double longitude,
+            double accuracy)
         {
             Action<Location> callback;
             var idVal = Guid.Parse(id);
