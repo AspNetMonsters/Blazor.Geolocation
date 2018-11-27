@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Blazor.Browser.Interop;
+﻿using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +17,14 @@ namespace AspNetMonsters.Blazor.Geolocation
             var requestId = Guid.NewGuid();
 
             _pendingRequests.Add(requestId, tcs);
-            RegisteredFunction.Invoke<object>("GetLocation", requestId);
-            return await tcs.Task;
+            return await JSRuntime.Current.InvokeAsync<Location>("GetLocation", requestId );
         }
 
-        public void WatchLocation(Action<Location> watchCallback)
+        public async Task WatchLocation(Action<Location> watchCallback)
         {
             var requestId = Guid.NewGuid();
             _watches.Add(requestId, watchCallback);
-            RegisteredFunction.Invoke<object>("WatchLocation", requestId);
+            await JSRuntime.Current.InvokeAsync<Location>("WatchLocation", requestId);
         }
 
         private static void ReceiveResponse(
