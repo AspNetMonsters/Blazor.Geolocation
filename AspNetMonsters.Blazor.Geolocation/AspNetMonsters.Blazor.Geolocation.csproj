@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageProjectUrl>https://github.com/AspNetMonsters/Blazor.Geolocation</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/AspNetMonsters/Blazor.Geolocation/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://github.com/AspNetMonsters/Blazor.Geolocation/blob/master/LICENSE</PackageLicense>
     <Copyright>Simon Timms, David Paquette, James Chambers</Copyright>
     <Description>Blazor interop for the browser's Geolocation apis</Description>
     <RepositoryUrl>https://github.com/AspNetMonsters/Blazor.Geolocation</RepositoryUrl>
