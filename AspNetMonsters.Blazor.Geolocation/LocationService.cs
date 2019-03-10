@@ -10,6 +10,12 @@ namespace AspNetMonsters.Blazor.Geolocation
     {
         static IDictionary<Guid, TaskCompletionSource<Location>> _pendingRequests = new Dictionary<Guid, TaskCompletionSource<Location>>();
         static IDictionary<Guid, Action<Location>> _watches = new Dictionary<Guid, Action<Location>>();
+        private readonly IJSRuntime jSRuntime;
+
+        public LocationService(IJSRuntime jSRuntime)
+        {
+            this.jSRuntime = jSRuntime;
+        }
 
         public async Task<Location> GetLocationAsync()
         {
@@ -17,7 +23,7 @@ namespace AspNetMonsters.Blazor.Geolocation
             var requestId = Guid.NewGuid();
 
             _pendingRequests.Add(requestId, tcs);
-            var result = await JSRuntime.Current.InvokeAsync<Location>("AspNetMonsters.Blazor.Geolocation.GetLocation", requestId);
+            var result = await jSRuntime.InvokeAsync<Location>("AspNetMonsters.Blazor.Geolocation.GetLocation", requestId);
             
             return await tcs.Task;
         }
@@ -26,7 +32,7 @@ namespace AspNetMonsters.Blazor.Geolocation
         {
             var requestId = Guid.NewGuid();
             _watches.Add(requestId, watchCallback);
-            await JSRuntime.Current.InvokeAsync<Location>("AspNetMonsters.Blazor.Geolocation.WatchLocation", requestId);
+            await jSRuntime.InvokeAsync<Location>("AspNetMonsters.Blazor.Geolocation.WatchLocation", requestId);
         }
 
         [JSInvokable]
