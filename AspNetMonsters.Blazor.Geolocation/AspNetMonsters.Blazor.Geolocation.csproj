@@ -1,7 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+
     <PackageProjectUrl>https://github.com/AspNetMonsters/Blazor.Geolocation</PackageProjectUrl>
     <PackageLicense>https://github.com/AspNetMonsters/Blazor.Geolocation/blob/master/LICENSE</PackageLicense>
     <Copyright>Simon Timms, David Paquette, James Chambers</Copyright>
@@ -11,23 +13,26 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>AspNetMonsters.Blazor.Geolocation</AssemblyName>
     <RootNamespace>AspNetMonsters.Blazor.Geolocation</RootNamespace>
-    <Version>0.4.0.1018-PRE</Version>
+    <Version>0.5.0-preview1</Version>
 
     <DefaultItemExcludes>${DefaultItemExcludes};node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- .js/.css files will be referenced via <script>/<link> tags; other content files will just be included in the app's 'dist' directory without any tags referencing them -->
-    <EmbeddedResource Include="content\**\*.js" LogicalName="blazor:js:%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Remove="package-lock.json" />
+    <Content Remove="package.json" />
+    <Content Remove="tsconfig.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="package-lock.json" />
+    <None Include="package.json" />
+    <None Include="tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="npm-debug.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="0.9.0-preview3-19154-02" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.9.0-preview3-19154-02" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0-rc1.19457.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0-rc1.19457.4" />
   </ItemGroup>
 
 </Project>
