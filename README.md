@@ -12,7 +12,17 @@ This package provides Blazor applications with access to the browser's [Geolocat
 
 1) In your Blazor app's `Startup.cs`, register the 'LocationService'.
 
+	###### Blazor Server
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+        services.AddScoped<LocationService>();
+        ...
+    }
     ```
+    ###### Blazor WebAssembly
+    ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
         ...
@@ -21,9 +31,19 @@ This package provides Blazor applications with access to the browser's [Geolocat
     }
     ```
 
+1) Add the link to the Location.js script in:
+
+	- _Host.cshtml for Blazor Server
+	- index.html for Blazor WebAssembly
+	
+    ```html
+    <script src="_content/AspNetMonsters.Blazor.Geolocation/Location.js"></script>
+	```
 1) Now you can inject the LocationService into any Blazor page and use it like this:
 
-    ```
+	###### Blazor Server
+	Call the LocationService in the OnAfterRenderAsync method
+	```
     @using AspNetMonsters.Blazor.Geolocation
     @inject LocationService  LocationService
     <h3>You are here</h3>
@@ -37,7 +57,31 @@ This package provides Blazor applications with access to the browser's [Geolocat
     {
         Location location;
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            location = await LocationService.GetLocationAsync();
+			StateHasChanged();
+        }
+    }
+    ```
+    
+    ###### Blazor WebAssembly
+    Call the LocationService in the OnInitializedAsync method
+	```
+    @using AspNetMonsters.Blazor.Geolocation
+    @inject LocationService  LocationService
+    <h3>You are here</h3>
+    <div>
+    Lat: @location?.Latitude <br/>
+    Long: @location?.Longitude <br />
+    Accuracy: @location?.Accuracy <br />
+    </div>
+
+    @functions
+    {
+        Location location;
+
+        protected override async Task OnInitializedAsync()
         {
             location = await LocationService.GetLocationAsync();
         }
