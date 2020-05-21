@@ -6,8 +6,6 @@
     "build": "tsc"
   },
   "devDependencies": {
-    "@types/emscripten": "0.0.31",
-    "ts-loader": "^3.2.0",
-    "typescript": "^2.6.1"
+    "typescript": "^3.6.4"
   }
 }

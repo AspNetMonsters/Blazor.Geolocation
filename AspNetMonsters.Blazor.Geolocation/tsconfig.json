@@ -5,15 +5,13 @@
     "removeComments": false,
     "sourceMap": true,
     "target": "es5",
+    "module": "umd",
     "lib": [
       "es2015",
       "dom"
     ],
     "strict": true,
-    "outDir": "./content/"
+    "outDir": "./wwwroot/"
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [ "**/*.ts" ]
+  "include": [ "src/*.ts" ]
 }
