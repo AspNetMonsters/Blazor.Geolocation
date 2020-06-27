@@ -16,7 +16,7 @@ This package provides Blazor applications with access to the browser's [Geolocat
     public void ConfigureServices(IServiceCollection services)
     {
         ...
-        services.AddSingleton<LocationService>();
+        services.AddScoped<LocationService>();
         ...
     }
     ```
@@ -33,14 +33,24 @@ This package provides Blazor applications with access to the browser's [Geolocat
     Accuracy: @location?.Accuracy <br />
     </div>
 
-    @functions
-    {
-        Location location;
+      @functions
+      {
+      Location location = null;
 
-        protected override async Task OnInitAsync()
-        {
-            location = await LocationService.GetLocationAsync();
-        }
+      protected async Task GetLocation()
+      {
+          location = await LocationService.GetLocationAsync();
+          this.StateHasChanged();
+      }
+
+      protected override async Task OnAfterRenderAsync(bool first)
+      {
+          if (first)
+          {
+              base.OnAfterRender(first);
+              await GetLocation();
+          }
+      }
     }
     ```
 
