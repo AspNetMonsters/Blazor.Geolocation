@@ -10,7 +10,7 @@
       "dom"
     ],
     "strict": true,
-    "outDir": "./content/"
+    "outDir": "./wwwroot/"
   },
   "exclude": [
     "node_modules"
