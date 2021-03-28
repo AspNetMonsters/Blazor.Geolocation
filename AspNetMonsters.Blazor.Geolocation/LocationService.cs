@@ -40,7 +40,12 @@ namespace AspNetMonsters.Blazor.Geolocation
             string id,
             double latitude,
             double longitude,
-            double accuracy)
+            double? altitude,
+            double accuracy,
+            double? altitudeAccuracy,
+            double? heading,
+            double? speed)
+
         {
             TaskCompletionSource<Location> pendingTask;
             var idVal = Guid.Parse(id);
@@ -49,7 +54,12 @@ namespace AspNetMonsters.Blazor.Geolocation
             {
                 Latitude = Convert.ToDecimal(latitude),
                 Longitude = Convert.ToDecimal(longitude),
-                Accuracy = Convert.ToDecimal(accuracy)
+                Altitude = Convert.ToDecimal(altitude),
+                Accuracy = Convert.ToDecimal(accuracy),
+                AltitudeAccuracy = Convert.ToDecimal(altitudeAccuracy),
+                Heading = Convert.ToDecimal(heading),
+                Speed = Convert.ToDecimal(speed)
+
             });
         }
 
@@ -58,7 +68,12 @@ namespace AspNetMonsters.Blazor.Geolocation
             string id,
             double latitude,
             double longitude,
-            double accuracy)
+            double? altitude,
+            double accuracy,
+            double? altitudeAccuracy,
+            double? heading,
+            double? speed)
+
         {
             Action<Location> callback;
             var idVal = Guid.Parse(id);
@@ -67,7 +82,12 @@ namespace AspNetMonsters.Blazor.Geolocation
             {
                 Latitude = Convert.ToDecimal(latitude),
                 Longitude = Convert.ToDecimal(longitude),
-                Accuracy = Convert.ToDecimal(accuracy)
+                Altitude = Convert.ToDecimal(altitude),
+                Accuracy = Convert.ToDecimal(accuracy),
+                AltitudeAccuracy = Convert.ToDecimal(altitudeAccuracy),
+                Heading = Convert.ToDecimal(heading),
+                Speed = Convert.ToDecimal(speed)
+
             });
         }
     }
