@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "@types/emscripten": "0.0.31",
-    "ts-loader": "^3.2.0",
+    "ts-loader": "^9.4.2",
     "typescript": "^2.6.1"
   }
 }
